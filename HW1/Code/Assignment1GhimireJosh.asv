@@ -37,11 +37,14 @@ v3SelectedAverage = mean(V3(10:20))
 %% Question 10
 
 %% Bonus Question
-recordingFrequency = 5000;   %acquisition frequency in Hz
-timeMins = 10;               %acquisition time in minutes
-timeSeconds = timeMins*60;   %acquisition time in seconds
-numSamples = recordingFrequency * timeSeconds;         %total number of samples recorded
-timePerSample = 1/recordingFrequency;                  %how long it takes (in seconds) to collect a sample
+recordingFrequency = 5000;     %acquisition frequency in Hz
+timeMins = 10;                 %acquisition time in minutes
+timeSeconds = timeMins * 60;   %acquisition time in seconds
+numSamples = recordingFrequency * timeSeconds;              %total number of samples recorded. Value not used
+timePerSample = 1/recordingFrequency;                       %how long it takes (in seconds) to collect a sample
+secondsSinceRecordingStart = 0:timePerSample:timeSeconds;   %vector whose value in every cell is the amount of seconds passed since beginning of recording.
+secondsSinceRecordingStart = secondsSinceRecordingStart(2:end);
 
-secondsSinceRecordingStart = zeros(1,numSamples);      %pre-allocate empty vector of necessary size
-secondsSinceRecordingStart = [0:timePerSample:numSamples]
+
+
+
