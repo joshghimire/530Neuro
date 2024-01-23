@@ -74,7 +74,9 @@ vector2Sem = std(vector2) / sqrt(length(vector2))
 vector3Sem = std(vector3) / sqrt(length(vector3))
 
 % The values are not similar. The standard error of the mean decreases as number of samples or vector length increases. 
-% As the standard error is a measur
+% As the standard error is a measure for how accurately a sample data represents population data, as the number of samples increases,
+% the standard error decreases since the standard error is approaching the true value of the population data. 
+
 %% Bonus Question
 recordingFrequency = 5000;     %acquisition frequency in Hz
 timeMins = 10;                 %acquisition time in minutes
