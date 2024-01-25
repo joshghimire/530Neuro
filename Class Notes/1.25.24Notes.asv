@@ -1,0 +1,22 @@
+x = 0:.1:10;
+z = cos(x);
+y = sin(x);
+
+figure
+plot(x,z)
+hold on
+plot(x, y, 'r')
+g =  11.5;
+
+% labelling plot
+xlabel('Time')
+ylabel('Voltage')
+%title('Y and Z')
+title(['Y and Z ' num2str(g)])
+
+%% Subplots
+figure;
+subplot(2,1,1)  % How many rows, how many columns of plot, what is index of current one that I want to plot
+plot(x,z)       % plot this on the first plot
+subplot(2,1,2)  % switch over to the second subplot
+plot(x,z,'p')
