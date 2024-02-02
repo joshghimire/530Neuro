@@ -26,7 +26,7 @@ figure
 plot(timeVec, data.raw_dFF(1, :))   % 3a: plot cont. dFF trace of first neuron
 xlabel('time (S)')                  % Their magnitudes range from ~0.5 to ~6 for the tallest peaks
 ylabel('dF/F')                      % They last about 0.5s - 1s
-title('flurosence of neuron 1 vs. time ')
+title('flurosence of neuron 1 vs. time')
 
 % TO DO; Did i read the instructions for this correctly?
 figure
@@ -35,4 +35,27 @@ xlabel('time (S)')
 ylabel('dF/F')                      
 title('flurosence of all neurons vs. time')
 
-%% Q4. 
+% Trying to re-do it correctly
+for i = 1:size(data.raw_dFF,1)
+    rawDFFPlusI(i, :) = data.raw_dFF(i, 1:end) + i;
+end
+figure
+plot(timeVec, rawDFFPlusI) 
+xlabel('time (S)')                          
+ylabel('Neuron')                      
+title('flurosence of all neurons vs. time')
+ylim([0 48])
+%% Q4.
+hold on                             
+xline(stimTimes, '-.')
+
+%% Q5. 
+% 1) Some neurons, like Neuron 28 don't react at all to stimulus.
+% 2) Some neurons, like neurons 2 and 29 fire readily and consistently every time the stimulus is applied.
+% 3) Some neurons, like neuron 3 fire after the stimulus some of the time. And their firing isn't consistent. 
+%    Sometimes there is a large change in flurosence when they fire, other times the change is tiny. 
+% 4) Some neurons, like neuron 14 have a 'noisy' signal throughout the recording. 
+% 5) Of the neurons in the dataset, most don't consistently fire with the stimulus. There are more neurons that don't
+%    fire after the stimulus or fire infrequently after the stimulus than there are neurons which fire consistently after
+%    the stimulus. 
+
