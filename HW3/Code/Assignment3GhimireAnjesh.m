@@ -1,5 +1,6 @@
 %% Q1. Load Data
-load C:\Users\NaanB\Documents\Matlab\530Neuro\HW3\Data\imagingData.mat
+% load C:\Users\NaanB\Documents\Matlab\530Neuro\HW3\Data\imagingData.mat
+load 'H:\My Documents\MATLAB\530Neuro\HW3\Data\imagingData.mat'
 
 %% Q2.
 raw_dFF = data.raw_dFF;         % 2a
@@ -8,7 +9,7 @@ stimInd = data.idxCueOn;        % 2a
 numStim = length(stimInd);      % 2b: number of presented stimuli
 numCells = size(raw_dFF, 1);    % 2c: number of cells
 
-timeVec = data.timeFrame*1000;  % 2d: sample times IN SECONDS
+timeVec = data.timeFrame./1000;  % 2d: sample times IN SECONDS
 
 stimTimes = timeVec(data.idxCueOn);     % 2e: time IN SECONDS of each stimulus 
 if stimTimes(1) > timeVec(1) && stimTimes(end) < timeVec(end)  % Confirm first and last stimuli are within timeVec
@@ -17,9 +18,12 @@ else
     disp("WARNING: First and last stimuli ARE NOT within the range of timeVec.")
 end
 
-% TO DO 2f.
-x = (1./timeVec(2:end));                % go from sample timestamps vector to sample rate ??
-frameRateinS =  % 2e: avg number of frames or samples per second.
+timeVecDiff = zeros(size(timeVec, 1), 1);           % 2f: pre-allocate vector for a for-loop
+for i = 2:length(timeVec)                           % 2f: skip first index of timeVec 
+    timeVecDiff(i, 1) = timeVec(i) - timeVec(i-1);
+end
+meanSampleRate = mean(timeVecDiff);
+meanFramesPerSecond = 1/meanSampleRate;
 
 %% Q3. 
 figure  
