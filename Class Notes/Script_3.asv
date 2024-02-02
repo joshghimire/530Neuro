@@ -116,6 +116,7 @@ for i=10:20
     allMyIs(i)=i;          
 end
 
+
 %%
 x = (0:0.1:10);           %First, define the vector x,
 figure                    %... and open a new figure.
@@ -130,7 +131,7 @@ figure
 while k<=5
     y = sin(x + k*pi/4);  
     hold on               
-    plot(x,y, 'LineWidth', 25)
+    plot(x,y)
     k=k+1;  % What would happen if we didn't have this?
 end
 % useful to know : break
@@ -140,6 +141,9 @@ end
 % calling it with i as the first parameter a.
 % Now, with i as the second parameter b.
 %%
+
+
+
 figure;
 for i=-100:100
     plotMyLine(i,5,'g');

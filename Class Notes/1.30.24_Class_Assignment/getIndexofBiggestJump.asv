@@ -1,0 +1,11 @@
+%function [idexOfBiggestJump] = getIndexofBiggestJump(vectorV)
+%    for i = 1:length(vectorV)
+%end
+
+vectorV = [10 11 12 13 14 18 10];
+for i = 1:length(vectorV)
+    difference = diff(vectorV);
+end
+
+find(difference(difference >= 0))
+difference = differnce
