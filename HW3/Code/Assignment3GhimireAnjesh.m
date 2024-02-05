@@ -20,7 +20,7 @@ end
 
 timeVecDiff = zeros(size(timeVec, 1), 1);           % 2f: pre-allocate vector for a for-loop
 for i = 2:length(timeVec)                           % 2f: skip first index of timeVec 
-    timeVecDiff(i, 1) = timeVec(i) - timeVec(i-1);
+    timeVecDiff(i, 1) = timeVec(i) - timeVec(i-1);  % get the difference between each element in timeVec to calculate mean sample rate
 end
 meanSampleRate = mean(timeVecDiff);
 meanFramesPerSecond = 1/meanSampleRate;
@@ -31,17 +31,9 @@ plot(timeVec, data.raw_dFF(1, :))   % 3a: plot cont. dFF trace of first neuron
 xlabel('time (S)')                  % Their magnitudes range from ~0.5 to ~6 for the tallest peaks
 ylabel('dF/F')                      % They last about 0.5s - 1s
 title('flurosence of neuron 1 vs. time')
-
-% TO DO; Did i read the instructions for this correctly?
-figure
-plot(timeVec, data.raw_dFF)         % 3b: plot dFF trace of all neurons
-xlabel('time (S)')                          
-ylabel('dF/F')                      
-title('flurosence of all neurons vs. time')
-
-% Trying to re-do it correctly
-for i = 1:size(data.raw_dFF,1)
-    rawDFFPlusI(i, :) = data.raw_dFF(i, 1:end) + i;
+ 
+for i = 1:size(data.raw_dFF,1)      % 3b: plot continuous dFF traces for all neurons.
+    rawDFFPlusI(i, :) = data.raw_dFF(i, 1:end) + i; % add the value of i the trace of the ith neuron, for all neurons
 end
 figure
 plot(timeVec, rawDFFPlusI) 
@@ -50,8 +42,10 @@ ylabel('Neuron')
 title('flurosence of all neurons vs. time')
 ylim([0 48])
 %% Q4.
-hold on                             
-xline(stimTimes, '-.')
+hold on
+for i = 1:numStim % use 'line' with for loop instead of 'x-line'to determine the height of each x-line.
+    line([stimTimes(i) stimTimes(i)], [0 numCells + 1], 'Color','k','Linestyle','--');  % I think one stimTime(i) is the x coordinate on the bottom of the plot, other is on top of plot.
+end
 
 %% Q5. 
 % 1) Some neurons, like Neuron 28 don't react at all to stimulus.
