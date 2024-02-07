@@ -1,6 +1,6 @@
 %% Q1. Load Data
-% load C:\Users\NaanB\Documents\Matlab\530Neuro\HW3\Data\imagingData.mat
-load 'H:\My Documents\MATLAB\530Neuro\HW3\Data\imagingData.mat'
+load C:\Users\NaanB\Documents\Matlab\530Neuro\HW3\Data\imagingData.mat
+% load 'H:\My Documents\MATLAB\530Neuro\HW3\Data\imagingData.mat'
 
 %% Q2.
 raw_dFF = data.raw_dFF;         % 2a
@@ -57,3 +57,6 @@ end
 %    fire after the stimulus or fire infrequently after the stimulus than there are neurons which fire consistently after
 %    the stimulus. 
 
+%% Q7 IN CLASS PSTH for neuron 1
+for i = 1:length(stimTimes)
+    psth(i) = 
