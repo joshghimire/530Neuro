@@ -57,6 +57,44 @@ end
 %    fire after the stimulus or fire infrequently after the stimulus than there are neurons which fire consistently after
 %    the stimulus. 
 
+%% Q6. 
+% Adding 5*i to each neuron's dFF and scaling the graph such that all traces are visible makes it a little more easy to see large changes in
+% fluoresence in response to stimuli, but it also makes smaller responses to stimuli much less visible.
+for i = 1:size(data.raw_dFF,1)      % 6: plot continuous dFF traces for all neurons with 5*i window.
+    rawDFFPlusI(i, :) = data.raw_dFF(i, 1:end) + 5*i; % add the value of i the trace of the ith neuron, for all neurons
+end
+figure
+plot(timeVec, rawDFFPlusI) 
+xlabel('time (S)')                          
+ylabel('Neuron')                      
+title('flurosence of all neurons vs. time')
+ylim([0 48])
+
+% Adding 0.4*i to the value of each neuron's dFF makes it difficult to distinguish individual traces and makes it difficult to visualize all but the
+% largest change in flurosence signals.
+for i = 1:size(data.raw_dFF,1)      % 6: plot continuous dFF traces for all neurons with 0.4*i window.
+    rawDFFPlusI(i, :) = data.raw_dFF(i, 1:end) + 0.4*i; % add the value of i the trace of the ith neuron, for all neurons
+end
+figure
+plot(timeVec, rawDFFPlusI) 
+xlabel('time (S)')                          
+ylabel('Neuron')                      
+title('flurosence of all neurons vs. time')
+ylim([0 48])
+
 %% Q7 IN CLASS PSTH for neuron 1
-for i = 1:length(stimTimes)
-    psth(i) = 
+%for i = 1:length(stimTimes)
+   % psth(i) = 
+
+% 7a TODO: The window of the dFF raster plot should be smaller than the smallest interstimulus interval so that additional stimuli are not included in the
+% PSTH.
+
+% 7b TODO: Am I doing this right?: Not sure, instructions not fully clear. 
+sampleUnits = 1:length(raw_dFF);    % Use each frame as the sample number instead of the timestamp of each frame
+windowSizeInSamples = % don't I need to have done the rest of the problem to start this part? I need to know the num samples aka frames on either side of 
+% the stimulus to use. 
+
+% 7c
+% for i = 1:number of stimuli for neuron 1
+%   psth(i) = ((fluoresence data for neuron 1 at stimulus i) - windowSize) : (fluoresence data for neuron 1 at stimulus i + (windowSize))
+% end
