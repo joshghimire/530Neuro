@@ -94,7 +94,25 @@ sampleUnits = 1:length(raw_dFF);    % Use each frame as the sample number instea
 windowSizeInSamples = % don't I need to have done the rest of the problem to start this part? I need to know the num samples aka frames on either side of 
 % the stimulus to use. 
 
-% 7c
+
 % for i = 1:number of stimuli for neuron 1
 %   psth(i) = ((fluoresence data for neuron 1 at stimulus i) - windowSize) : (fluoresence data for neuron 1 at stimulus i + (windowSize))
 % end
+
+% CLass 2.8.24 Class Notes, trying to make psth
+% convert timestamp of stimulus to frame of stimulus first. 
+% According to Gideon, don't be exact about converting each time 
+
+for i = 1:numStim
+    if i<60
+    minimumInterStimulusInterval(i) = (stimTimes(i+1) - stimTimes(i));
+    end
+end
+windowSize = min(minimumInterStimulusInterval);
+for i = i:numStim
+    window(i) = 
+
+    % DONT COUNT DATA IN STIM ONSET WHEN DOING MEAN OF STIMONSET. include stim onset 
+    % as part of the after stimulus to response to end of the response. 
+
+    % Doing the t-test allows you to ask "what is the proportion of neurons in my sample that respond to the stimulus"
