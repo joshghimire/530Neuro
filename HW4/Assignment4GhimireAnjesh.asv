@@ -19,9 +19,11 @@ else
 end
 
 timeVecDiff = zeros(size(timeVec, 1), 1);           % 2f: pre-allocate vector for a for-loop
-for i = 2:length(timeVec)                           % 2f: skip first index of timeVec 
-    timeVecDiff(i, 1) = timeVec(i) - timeVec(i-1);  % get the difference between each element in timeVec to calculate mean sample rate
-end
+%for i = 2:length(timeVec)                           % 2f: skip first index of timeVec 
+    %timeVecDiff(i, 1) = timeVec(i) - timeVec(i-1);  % get the difference between each element in timeVec to calculate mean sample rate
+for i = 1:length(timeVec)
+    timeVecDiff(i,2) = diff(timeVec, timeVec(i-1));
+ end
 meanSampleRate = mean(timeVecDiff);
 meanFramesPerSecond = 1/meanSampleRate;
 
@@ -46,17 +48,19 @@ for i= 1:numCells
     allCellRasters{i} = currCellResp;
 end
 %% Q2.
+xAxis = [1:windowSizeInTime];
+yAxis = [1:numStim];
 for i = 1:2 %length(allCellRasters)
     figure
     subplot(2,1,1)
-    imagesc(allCellRasters{i})
+    imagesc(xAxis, yAxis, allCellRasters{i})
+    % use imagesc x, y syntax
     title(sprintf('Neuron %d Responses', i))
     
     ylabel('Trial-wise Responses')
 
     % TO DO change x-axis to time instead of frames
+    xlabel('Frames')
     
-    xlabel('Time (s)')
-    xlim([1 length(allCellRasters{i})])
-    xtick = meanFramesPerSecond;
+    
 end

@@ -17,10 +17,9 @@ if stimTimes(1) > timeVec(1) && stimTimes(end) < timeVec(end)  % Confirm first a
 else
     disp("WARNING: First and last stimuli ARE NOT within the range of timeVec.")
 end
-
-timeVecDiff = zeros(size(timeVec, 1), 1);           % 2f: pre-allocate vector for a for-loop
-for i = 2:length(timeVec)                           % 2f: skip first index of timeVec 
-    timeVecDiff(i, 1) = timeVec(i) - timeVec(i-1);  % get the difference between each element in timeVec to calculate mean sample rate
+           
+for i = 1:length(timeVec)               % 2f
+    timeVecDiff = diff(timeVec);        % get the difference between each element in timeVec to calculate mean sample rate
 end
 meanSampleRate = mean(timeVecDiff);
 meanFramesPerSecond = 1/meanSampleRate;
@@ -46,13 +45,12 @@ for i= 1:numCells
     allCellRasters{i} = currCellResp;
 end
 %% Q2.
-xAxis = [1:windowSizeInTime];
-yAxis = [1:numStim];
-for i = 1:2 %length(allCellRasters)
+xAxis = 1:windowSizeInTime;
+yAxis = 1:numStim;
+for i = 1:2 %length(allCellRasters)         % TODO remove 2 and uncomment %length 
     figure
     subplot(2,1,1)
-    imagesc(xAxis, yAxis, allCellRasters{i})
-    % use imagesc x, y syntax
+    imagesc(xAxis, yAxis, allCellRasters{i})     % use imagesc x, y syntax. THANKS JOHNATHAN
     title(sprintf('Neuron %d Responses', i))
     
     ylabel('Trial-wise Responses')
