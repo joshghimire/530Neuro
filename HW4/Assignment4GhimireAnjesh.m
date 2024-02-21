@@ -1,6 +1,6 @@
 %% Load data
-load C:\Users\NaanB\Documents\Matlab\530Neuro\HW3\Data\imagingData.mat
-% load 'H:\My Documents\MATLAB\530Neuro\HW3\Data\imagingData.mat'
+% load C:\Users\NaanB\Documents\Matlab\530Neuro\HW3\Data\imagingData.mat
+load 'H:\My Documents\MATLAB\530Neuro\HW3\Data\imagingData.mat'
 
 % Load Variables
 raw_dFF = data.raw_dFF;         % 2a
@@ -47,20 +47,18 @@ end
 %% Q2.
 xAxis = 1:windowSizeInTime;
 yAxis = 1:numStim;
-for i = 1:2 %length(allCellRasters)         % TODO remove number and uncomment %length 
+for i = 1:5 %length(allCellRasters)         % TODO remove number and uncomment %length 
     figure
     subplot(2,1,1)
     imagesc(xAxis, yAxis, allCellRasters{i})     % use imagesc x, y syntax. THANKS JOHNATHAN
     title(sprintf('Neuron %d Responses', i))
     ylabel('Trial-wise Responses')
     xlabel('Time (s)')
-   
-    x= 1:1:5;
+
     subplot(2,1,2)
+    x = linspace(1,windowSizeInTime, length(allCellRasters{i}));    % JESUS. The easiest way to match x-axes for both subplots is to use linspace to make x-axis for plot fn.
     plot(x, mean(allCellRasters{i}))
     xlabel('Time (s)')
     ylabel('Mean PSTH')
-    % xlim([1, 5]);
-    % xticks(1:meanFramesPerSecond:75)
-    % xticks(1:floor(meanFramesPerSecond):size(allCellRasters{i}, 2)); DIdn't work
+    
 end
