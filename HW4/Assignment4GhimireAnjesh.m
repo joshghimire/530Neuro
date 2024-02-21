@@ -47,16 +47,20 @@ end
 %% Q2.
 xAxis = 1:windowSizeInTime;
 yAxis = 1:numStim;
-for i = 1:2 %length(allCellRasters)         % TODO remove 2 and uncomment %length 
+for i = 1:2 %length(allCellRasters)         % TODO remove number and uncomment %length 
     figure
     subplot(2,1,1)
     imagesc(xAxis, yAxis, allCellRasters{i})     % use imagesc x, y syntax. THANKS JOHNATHAN
     title(sprintf('Neuron %d Responses', i))
-    
     ylabel('Trial-wise Responses')
-
-    % TO DO change x-axis to time instead of frames
-    xlabel('Frames')
-    
-    
+    xlabel('Time (s)')
+   
+    x= 1:1:5;
+    subplot(2,1,2)
+    plot(x, mean(allCellRasters{i}))
+    xlabel('Time (s)')
+    ylabel('Mean PSTH')
+    % xlim([1, 5]);
+    % xticks(1:meanFramesPerSecond:75)
+    % xticks(1:floor(meanFramesPerSecond):size(allCellRasters{i}, 2)); DIdn't work
 end
