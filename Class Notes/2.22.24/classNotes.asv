@@ -1,17 +1,38 @@
 %% loading data
+% Import the Regression TRAINING Dataset
 TTrain = readtable("regression_train.csv");
 % Extract features and behavior
 columnsFeatures = startsWith(TTrain.Properties.VariableNames, 'channel');
 columnsBehavior = startsWith(TTrain.Properties.VariableNames, 'X_');
 XTrain = table2array(TTrain(:,columnsFeatures));
 YTrain = table2array(TTrain(:, columnsBehavior));
+xPos = YTrain(:,1);
+xVel = YTrain(:,3);
+yPos = YTrain(:,2);
+yVel = YTrain(:,4);
 
-TTrain1 = readtable("classification_train.csv");
-% Extract directions and features
-columnsFeatures = startsWith(TTrain.Properties.VariableNames, 'channel');
-XTrain1 = table2array(TTrain(:,columnsFeatures));
-YTrain1 = categorical(TTrain.Direction);
+%Import the Regression TESTING Dataset. This data is will be used for testing after the model is first trai 
+TTest = readtable("regression_train.csv")
+
+% % Import the Classification TRAINING Dataset
+% TTrain1 = readtable("classification_train.csv");
+% % Extract directions and features
+% columnsFeatures1 = startsWith(TTrain1.Properties.VariableNames, 'channel');
+% XTrain1 = table2array(TTrain1(:,columnsFeatures1));
+% YTrain1 = categorical(TTrain1.Direction);
+%% playing with data still
+thresholdCrossingPerTimeBin = sum(XTrain, 2);
+figure 
+scatter3(thresholdCrossingPerTimeBin, xPos, yVel);
+% figure
+% scatter(thresholdCrossingPerTimeBin, xVel);
+% figure
+% scatter(thresholdCrossingPerTimeBin, yPos);
+% figure
+% scatter(thresholdCrossingPerTimeBin, yVel);
 
 
-%% 
-plot(T)
+%% training the regression model dataset
+XTrainHat = [XTrain ones(size(XTrain, 1), 1)];  % Doesn't this just add a Column vector of 1's at the end of XTrain?
+YTrain = YTrain;    % Just following/copying the example on the assignement
+W = (XTrainHat' * XTrainHat) \ XTrainHat' * YTrain;
