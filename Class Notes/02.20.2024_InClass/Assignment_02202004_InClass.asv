@@ -13,7 +13,5 @@ spikes(spikeSampleIndices) = 1;
 
 figure
 plot(spikes)
-xlabel('Time (ms)')
-ylabel('Spike Presence')
-
-%% Q3. 
+xlabel('Time')
+yaxis('')

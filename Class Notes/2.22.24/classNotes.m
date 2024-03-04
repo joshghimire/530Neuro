@@ -66,7 +66,7 @@ W = (XTrainHat' * XTrainHat) \ XTrainHat' * YTrain;
 
 %% Q3. Test the model on the test data
 XTestHat = [XTest ones(size(XTest, 1), 1)]; % First, add column of ones to X
-YTest = YTest;                              % Following the exmple
+YTest = YTest;                              % Following the example
 YTestPred = XTestHat * W;                   
 
 % Compute correlation and mean squared error
@@ -78,3 +78,6 @@ YPred = classify(XTest, XTrain, YTrain);
 [C, order] = confusionmat(YTest, YPred);
 figure;
 cm = confusionchart(C, order);
+
+% The confusion matrix is ONLY for the classification dataset. Just make a 2x2 subplot for 3. 
+% From Johnathan about YTrain error on line 77 with classify. look for little y on the instructions for this assignment. 

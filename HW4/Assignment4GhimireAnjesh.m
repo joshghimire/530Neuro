@@ -4,7 +4,7 @@ load C:\Users\NaanB\Documents\Matlab\530Neuro\HW3\Data\imagingData.mat
 
 % Load Variables
 raw_dFF = data.raw_dFF;         % 2a
-stimInd = data.idxCueOn;        % 2a
+stimInd = data.idxCueOn;        % 2a: sample number of each presented stimulus
 
 numStim = length(stimInd);      % 2b: number of presented stimuli
 numCells = size(raw_dFF, 1);    % 2c: number of cells
@@ -62,4 +62,4 @@ for i = 1:5 %length(allCellRasters)         % TODO remove number and uncomment %
     ylabel('Mean PSTH') 
 end
 %% Q3. 
-currDFFraster = deriveDFFraster(, stimInd, windowSizeInFrames);
+%currDFFraster = deriveDFFraster(, stimInd, windowSizeInFrames);
