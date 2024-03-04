@@ -25,10 +25,31 @@ YTest = table2array(TTest(:, columnsTestBehaviors));
 % XTrain1 = table2array(TTrain1(:,columnsFeatures1));
 % YTrain1 = categorical(TTrain1.Direction);
 %% Q1. Visualizing the data still
-thresholdCrossingPerTimeBin = sum(XTrain, 2);
+% The plots of positions and velocities resemble each other, but the velocity plots have a greater range of data along the y-axis.
+
 figure
-plot3(xPos, yPos, xVel) % The input arguments can be any of the positions and velocities and leads to similar looking plots.
+plot(xPos)                  % plotting just the xPosition Behavior
+
+figure
+plot(xVel)                  % plotting just the xVelocity
+
+figure
+plot(YTrain(:, 1:2))        % plotting just the x and y positions
+
+figure
+plot(YTrain(:, 3:4))        % plotting just the x and y velocities
+
+figure
+plot(YTrain)                % plotting all Positions and Velocities
+
+figure
+plot3(YTrain, xPos, yPos)   % plotting all Behaviors vs. X and Y position in a 3d plot
+    
+figure
+plot3(xPos, yPos, xVel)     % The input arguments can be any of the positions and velocities and leads to similar looking plots.
+
 figure 
+thresholdCrossingPerTimeBin = sum(XTrain, 2);
 scatter3(thresholdCrossingPerTimeBin, xPos, xVel);  % HEH? What is?
 % figure
 % scatter(thresholdCrossingPerTimeBin, xVel);
