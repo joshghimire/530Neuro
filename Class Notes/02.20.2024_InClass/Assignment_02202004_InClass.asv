@@ -44,44 +44,17 @@ title('Voltage vs. Time')
 signalToNoise = rms(modifiedVoltageTrace)/ rms(noise);              % TODO: IS THIS CORRECT
 sprintf('The Signal To Noise Ratio is: %f', signalToNoise)
 
-%% Q6a. SNR of 5 at neuronDistance ~2.4
+%% Q6. 
 % a. Change neuronDistance such that SNR is approx 5. Re-run code below so we don't accidentally change noise by running code above everytime.
-% Should have done this in a fn
-neuronDistance = 2.4;                                               % 6a: SNR ~5.0 @ neuronDistance around 2.4
+neuronDistance = 2.43;                                               % SNR ~4.0 @ neuronDistance around 3.7
 modifiedVoltageTrace = voltageTrace/sqrt(neuronDistance);
 voltageTraceNoise = modifiedVoltageTrace(:) + noise(:);
 signalToNoise = rms(modifiedVoltageTrace)/ rms(noise);             
 sprintf('The NEW Signal To Noise Ratio is: %f', signalToNoise)
 
-figure
-subplot(1, 2, 1)
-plot(voltageTraceNoise)
-title(sprintf('Voltage Trace With Noise at Neuron Distance %d' , neuronDistance))
-ylabel('Voltage')
-xlabel('Time (ms)')
-
-subplot(1, 2, 2)
-plot(modifiedVoltageTrace)
-title(sprintf('Voltage Trace Without Noise at Neuron Distance %d' , neuronDistance))
-ylabel('Voltage')
-xlabel('Time (ms)')
-
-%% Q6b. SNR of ~1 at neuronDistance 60
-neuronDistance = 60;                                               % 6a: SNR ~1 @ neuronDistance around 60
-modifiedVoltageTrace = voltageTrace/sqrt(neuronDistance);
-voltageTraceNoise = modifiedVoltageTrace(:) + noise(:);
-signalToNoise = rms(modifiedVoltageTrace)/ rms(noise);             
-sprintf('The NEW Signal To Noise Ratio is: %f', signalToNoise)
-
-figure
-subplot(1, 2, 1)
-plot(voltageTraceNoise)
-title(sprintf('Voltage Trace With Noise at Neuron Distance %d' , neuronDistance))
-ylabel('Voltage')
-xlabel('Time (ms)')
-
-subplot(1, 2, 2)
-plot(modifiedVoltageTrace)
-title(sprintf('Voltage Trace Without Noise at Neuron Distance %d' , neuronDistance))
-ylabel('Voltage')
-xlabel('Time (ms)')
+% figure
+% subplot(1, 2, 1)
+% plot(voltageTraceNoise)
+% 
+% subplot(1, 2, 2)
+% plot(modifiedVoltageTrace)
