@@ -41,7 +41,7 @@ title('Voltage vs. Time')
 
 %% Q5. Calculate the signal-to-noise ratio of voltageTraceNoise
 
-signalToNoise = rms(modifiedVoltageTrace)/ rms(noise);              % TODO: IS THIS CORRECT
+signalToNoise = rms(modifiedVoltageTrace)/ rms(noise);              % RMS VoltageTrace with Distance from Electrode accounted for. 
 sprintf('The Signal To Noise Ratio is: %f', signalToNoise)
 
 %% Q6a. SNR of 5 at neuronDistance ~2.4
