@@ -90,10 +90,5 @@ xlabel('Time (ms)')
 % If you use a voltage threshold to detect spikes and the SNR becomes too low, some of the noise could cross the low voltage threshold 
 % and be detected as a spike when it is really just noise. 
 
-% To fix this, you could alter the threshold such that threshold isn't a single line, but two lines that dynamically move "up" and "down" depending on
-% the magnitude or strength of noise in the recording, perhaps in a automated manner. This way, a spike would have to cross both of the lines
-% to be counted as a spike. 
-
-%% Q6d. 
-% The inter-spike-intervals gets progressively shorter as the spike rate increases. There is a lower limit to spike speed in real recordings as the
-% mechanisms behind spikes can't get faster. 
+% To fix this, you could alter the threshold such that threshold isn't a single line, but two lines that  dynamically move up and down with the 
+% quality of data gathered. This way, a pike would have to 
