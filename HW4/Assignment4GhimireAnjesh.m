@@ -1,6 +1,6 @@
 %% Load data
-load C:\Users\NaanB\Documents\Matlab\530Neuro\HW3\Data\imagingData.mat
-%load 'H:\My Documents\MATLAB\530Neuro\HW3\Data\imagingData.mat'
+%load C:\Users\NaanB\Documents\Matlab\530Neuro\HW3\Data\imagingData.mat
+load '/Users/joshghimire/Documents/MATLAB/NGP/530Neuro/HW3/Data/imagingData.mat'
 
 % Load Variables
 raw_dFF = data.raw_dFF;         % 2a
@@ -39,7 +39,7 @@ for i= 1:numCells
     currCellDFF = raw_dFF(i, :);
     currCellResp = [];
     for j = 1:numStim   % get sound triggered dff for 1 neuron
-        currResp = currCellDFF(stimInd(j) - windowSizeInFrames : stimInd(j) + windowSizeInFrames);
+        currResp = currCellDFF(stimInd(j) - windowSizeInFrames : stimInd(j) + windowSizeInFrames + 1);
         currCellResp(j,:) = currResp;
     end
     allCellRasters{i} = currCellResp;
@@ -61,5 +61,14 @@ for i = 1:5 %length(allCellRasters)         % TODO remove number and uncomment %
     xlabel('Time (s)')
     ylabel('Mean PSTH') 
 end
-%% Q3. 
-%currDFFraster = deriveDFFraster(, stimInd, windowSizeInFrames);
+%% Q3. Using a function to derive a Neuron's DFF raster
+% currDFFRaster = deriveDFFraster(currCellDFF, stimInd, windowSizeInFrames);
+for i = 1:numCells
+    currCellDFF = raw_dFF(i, :);
+    allCellRasters{i} = deriveDFFraster(currCellDFF, stimInd, windowSizeInFrames);    % calculate the DFF raster for the i-th neuron, and save it in allCellRastersFn{i}
+end
+%% Q4. Determine statistical significance of responsiveness of a given neurons dFF raster
+for i = 1:length(numCells)
+    currCellDFF = raw_dFF(i, :);
+    isResponsive(i) = testSoundResponsiveness(currDFFraster,windowSizeInFrames);
+end
