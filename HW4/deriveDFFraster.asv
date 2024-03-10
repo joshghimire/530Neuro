@@ -1,9 +1,0 @@
-function [currDFFraster] = deriveDFFraster(currCellDFF, stimInd, windowSizeInFrames)
-    numStim = length(stimInd);
-    for j = 1:numStim   
-        currResp = currCellDFF(stimInd(j) - windowSizeInFrames : stimInd(j) + windowSizeInFrames + 1);
-        currCellResp(j,:) = currResp;
-    end
-    allCellRasters{i} = currCellResp;
-end
-end
