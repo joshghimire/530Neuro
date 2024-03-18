@@ -30,6 +30,10 @@
 % 3rd row-> shank number, 4th row-> cluster number
 % 1st and second row-> mystery atm, tbd next class.
 % each column is an unit. 
+% in .traj, animal running left to right (?) is 3, animal running right to left (?) is 4
 
 % maybe start by looking at first 10 seconds in spike.t:
 % 32552 * 10 (as the sampling rate is 32552 Hz)
+
+% Jonathan- Each shank can have the same cluster number. Cluster number corelates to a unit.
+% Cluster 13 in shank 1 =/= cluster 13 in shank 2. 
